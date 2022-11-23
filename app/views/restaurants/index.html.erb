@@ -1,0 +1,21 @@
+<h2>All restaurants</h2>
+
+<ul class="list-unstyled">
+  <% @restaurants.each do |restaurant| %>
+    <li class="p-1">
+
+
+      <%= link_to restaurant.name, restaurant_path(restaurant.id), class: "text-decoration-none" %>
+
+      <%= link_to raw('<i class="fa-solid fa-trash-can ms-2 fw-lighter"></i>'),
+        restaurant_path(restaurant),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+        class: "link-dark"
+      %>
+    </li>
+  <% end %>
+</ul>
+
+<div class="border-top pt-3">
+  <%= link_to raw('<i class="fa-solid fa-plus me-1"></i> Add a new restaurant'), new_restaurant_path(@restaurant), class: "text-decoration-none" %>
+</div>
